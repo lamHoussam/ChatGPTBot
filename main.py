@@ -47,7 +47,13 @@ async def on_message(message:discord.Message):
         question = " ".join(args[1::])
         print(question)
         answer = answer_question(question)
-        await message.channel.send(answer)
+        mbd = discord.Embed(title='Question', description=question)
+
+        mbd.add_field(name='Answer', value=answer)
+
+        mbd.color = discord.Color.green()
+
+        await message.channel.send(embed=mbd)
     else:
         await message.reply("Unknown command")
 
